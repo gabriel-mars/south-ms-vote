@@ -9,8 +9,8 @@ import lombok.Data;
 @ApiModel(value = "VoteDto", description = "Dados de envio para computação do voto")
 public class VoteDto {
 
-    @ApiModelProperty(notes = "Documento(CPF) do associado votante", example = "123.456.789-00")
-    private String cpf;
+    @ApiModelProperty(notes = "Identificador do associado votante", example = "123.456.789-00")
+    private Long associateID;
 
     @ApiModelProperty(notes = "Voto", example = "SIM")
     private VoteType voteType;

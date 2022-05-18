@@ -4,14 +4,13 @@ import com.gabriel.martins.vote.converter.AssociateConverter;
 import com.gabriel.martins.vote.dto.AssociateDto;
 import com.gabriel.martins.vote.entity.AssociateEntity;
 import com.gabriel.martins.vote.repository.AssociateRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
