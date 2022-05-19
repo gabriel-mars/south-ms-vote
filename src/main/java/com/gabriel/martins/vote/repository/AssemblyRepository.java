@@ -11,9 +11,9 @@ import java.util.List;
 
 public interface AssemblyRepository extends JpaRepository<AssemblyEntity, Long> {
 
-    @Query(value = "SELECT * FROM AssemblyEntity a WHERE a.startingDate=:startingDate AND a.status =:status AND a.available:=available")
+    @Query(value = "SELECT a FROM AssemblyEntity a WHERE a.startingDate=:startingDate AND a.status =:status AND a.available=:available")
     List<AssemblyEntity> findByStargingDateAndStatusAndAvailable(@Param("startingDate") LocalDate startingDate, @Param("status") AssemblyStatus status, @Param("available") Boolean available);
 
-    @Query(value = "SELECT * FROM AssemblyEntity a WHERE a.endingDate=:endingDate AND a.status =:status AND a.available:=available")
+    @Query(value = "SELECT a FROM AssemblyEntity a WHERE a.endingDate=:endingDate AND a.status =:status AND a.available=:available")
     List<AssemblyEntity> findByEndingDateAndStatusAndAvailable(@Param("endingDate") LocalDate startingDate, @Param("status") AssemblyStatus status, @Param("available") Boolean available);
 }
