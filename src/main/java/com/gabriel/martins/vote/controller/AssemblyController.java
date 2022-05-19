@@ -22,7 +22,7 @@ public class AssemblyController {
 
     @PutMapping("/close/{id}")
     public ResponseEntity<Void> closeAssembly(@PathVariable(value = "id") Long assemblyId) {
-        service.closeAssembly(assemblyId);
+        service.closeAssemblyByID(assemblyId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

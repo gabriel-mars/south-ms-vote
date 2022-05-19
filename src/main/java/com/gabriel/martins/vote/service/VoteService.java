@@ -9,7 +9,7 @@ import com.gabriel.martins.vote.entity.AssociateEntity;
 import com.gabriel.martins.vote.entity.VoteEntity;
 import com.gabriel.martins.vote.enums.AssemblyStatus;
 import com.gabriel.martins.vote.enums.CpfStatus;
-import com.gabriel.martins.vote.repository.AssemblyRepositoty;
+import com.gabriel.martins.vote.repository.AssemblyRepository;
 import com.gabriel.martins.vote.repository.AssociateRepository;
 import com.gabriel.martins.vote.repository.VoteRepository;
 import org.apache.http.HttpResponse;
@@ -36,7 +36,7 @@ public class VoteService {
     private VoteRepository repository;
 
     @Autowired
-    private AssemblyRepositoty assemblyRepository;
+    private AssemblyRepository assemblyRepository;
 
     @Autowired
     private AssociateRepository associateRepository;
