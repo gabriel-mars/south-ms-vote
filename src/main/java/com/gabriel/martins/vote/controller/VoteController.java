@@ -1,6 +1,5 @@
 package com.gabriel.martins.vote.controller;
 
-import com.gabriel.martins.vote.dto.AssociateDto;
 import com.gabriel.martins.vote.dto.VoteDto;
 import com.gabriel.martins.vote.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;

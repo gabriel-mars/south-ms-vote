@@ -2,8 +2,6 @@ package com.gabriel.martins.vote.entity;
 
 import com.gabriel.martins.vote.enums.AssemblyStatus;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;

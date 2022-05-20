@@ -2,8 +2,6 @@ package com.gabriel.martins.vote.entity;
 
 import com.gabriel.martins.vote.enums.VoteType;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,7 +17,7 @@ public class VoteEntity implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(targetEntity = AssociateEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "associate_id", referencedColumnName = "id")
     private AssociateEntity associate;
 
@@ -30,7 +28,7 @@ public class VoteEntity implements Serializable {
     @Column(name = "vote_type", length = 3, nullable = false)
     private VoteType vote;
 
-    @ManyToOne(targetEntity = AssemblyEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "assembly_id", referencedColumnName = "id")
     private AssemblyEntity assembly;
 }

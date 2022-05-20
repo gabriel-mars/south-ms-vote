@@ -25,10 +25,13 @@ ext {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'io.springfox:springfox-swagger2:2.8.0'
 	implementation 'io.springfox:springfox-swagger-ui:2.8.0'
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.springframework.kafka:spring-kafka:2.3.3.RELEASE'
 
 	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
 	implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.17.1'
