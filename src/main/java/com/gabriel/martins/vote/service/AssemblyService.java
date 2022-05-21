@@ -13,6 +13,7 @@ import com.gabriel.martins.vote.repository.VoteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -89,7 +90,7 @@ public class AssemblyService {
                 repository.save(entity);
                 LOG.info("Pauta {} fechada", assemblyId);
 
-                producer.sendToTopic(mapper.writeValueAsString(converter.convertToDto(entity)));
+                producer.sendToTopic(mapper.writeValueAsString(converter.convertToKafkaDto(entity)));
             } else {
                 LOG.info("Pauta {} não encontrada ou já fechada para votação.", assemblyId);
             }
@@ -123,6 +124,7 @@ public class AssemblyService {
         }
     }
 
+    @Async
     public void processOpenAssemblies(){
         try{
             List<AssemblyEntity> assemblies = repository.findByStargingDateAndStatusAndAvailable(LocalDate.now(), AssemblyStatus.WAITING, Boolean.FALSE);
@@ -140,13 +142,14 @@ public class AssemblyService {
                 repository.saveAll(openedAssemblies);
                 LOG.info("{} pautas na data de hoje foram abertas.", openedAssemblies.size());
             } else {
-                LOG.info("Nenhuma pauta com a data de hoje foi encontrada.");
+                LOG.info("Nenhuma pauta com a data de abertura para hoje foi encontrada.");
             }
         } catch (Exception e) {
             LOG.error("Não foi possível abrir as pautas com a data de hoje. {}", e.getMessage());
         }
     }
 
+    @Async
     public void processCloseAssemblies(){
         try{
             List<AssemblyEntity> assemblies = repository.findByEndingDateAndStatusAndAvailable(LocalDate.now(), AssemblyStatus.VOTING, Boolean.TRUE);
@@ -159,7 +162,7 @@ public class AssemblyService {
             if(!closedAssemblies.isEmpty()){
                 closeAssemblies(closedAssemblies);
             } else {
-                LOG.info("Nenhuma pauta com a data de hoje foi encontrada.");
+                LOG.info("Nenhuma pauta com a data de fechamento para hoje foi encontrada.");
             }
         } catch (Exception e) {
             LOG.error("Não foi possível fechar as pautas com a data de hoje. {}", e.getMessage());

@@ -21,14 +21,14 @@ public class AssemblyController {
     }
 
     @PutMapping("/close/{id}")
-    public ResponseEntity<Void> closeAssembly(@PathVariable(value = "id") Long assemblyId) {
+    public ResponseEntity<String> closeAssembly(@PathVariable(value = "id") Long assemblyId) {
         service.closeAssemblyByID(assemblyId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok("Processo de fechamento da pauta iniciado.");
     }
 
     @PutMapping("/open/{id}")
-    public ResponseEntity<Void> openAssembly(@PathVariable(value = "id") Long assemblyId) {
+    public ResponseEntity<String> openAssembly(@PathVariable(value = "id") Long assemblyId) {
         service.openAssembly(assemblyId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok("Processo de abertura da pauta iniciado.");
     }
 }

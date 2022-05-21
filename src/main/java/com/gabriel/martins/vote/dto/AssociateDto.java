@@ -8,6 +8,9 @@ import lombok.Data;
 @ApiModel(value = "AssociateDto", description = "Dados de registro do associado")
 public class AssociateDto {
 
+    @ApiModelProperty(notes = "Identificador único do associado, utilizado para votar", example = "123")
+    private Long id;
+
     @ApiModelProperty(notes = "Documento(CPF) do associado", example = "123.456.789-00")
     private String cpf;
 

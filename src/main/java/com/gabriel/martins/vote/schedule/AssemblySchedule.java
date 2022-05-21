@@ -17,7 +17,7 @@ public class AssemblySchedule {
     @Autowired
     private AssemblyService service;
 
-    @Scheduled(fixedDelayString = "${schedule.open.time.interval.in.miliseconds}")
+    @Scheduled(cron = "0 1 0 * * ?")
     public void processOpenAssemblies(){
         try{
             LOG.info("Inicindo processamento de abertura de pautas. {}", LocalDateTime.now());
@@ -27,7 +27,7 @@ public class AssemblySchedule {
         }
     }
 
-    @Scheduled(fixedDelayString = "${schedule.close.time.interval.in.miliseconds}")
+    @Scheduled(cron = "0 59 23 * * ?")
     public void processCloseAssemblies(){
         try{
             LOG.info("Inicindo processamento de fechamento de pautas. {}", LocalDateTime.now());

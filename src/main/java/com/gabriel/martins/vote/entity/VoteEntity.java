@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Table(name = "vote")
+@Table(name = "vote", uniqueConstraints = { @UniqueConstraint(name = "constraint_associate_assembly", columnNames = { "associate_id", "assembly_id" }) })
 @Entity
 @Data
 public class VoteEntity implements Serializable {
