@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Table(name = "associate")
+@Table(name = "associate", uniqueConstraints = { @UniqueConstraint(name = "constraint_associate_cpf", columnNames = { "cpf" }) })
 @Entity
 @Data
 public class AssociateEntity implements Serializable {

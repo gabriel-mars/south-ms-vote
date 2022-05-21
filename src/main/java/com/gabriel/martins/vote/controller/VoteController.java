@@ -18,7 +18,7 @@ public class VoteController {
     @Autowired
     private VoteService service;
 
-    @PostMapping
+    @PostMapping({"/v1", "/v2"})
     public ResponseEntity<String> create(@RequestBody VoteDto vote) {
         service.create(vote);
         return ResponseEntity.ok("Voto em processamento!");

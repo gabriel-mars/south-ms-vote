@@ -7,12 +7,14 @@ import com.gabriel.martins.vote.repository.AssociateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class AssociateService {
@@ -48,6 +50,27 @@ public class AssociateService {
         } catch (Exception e){
             LOG.error("Não foi possível buscar os associados.");
             return null;
+        }
+    }
+
+    public void updateAssociate(Long associateId, AssociateDto associateDto){
+        try {
+            Optional<AssociateEntity> associateOp = repository.findById(associateId);
+
+            if(associateOp.isPresent()){
+                final AssociateEntity entity = converter.convertToEntity(associateDto);
+                entity.setId(associateOp.get().getId());
+                entity.setCreatedDate(associateOp.get().getCreatedDate());
+
+                repository.save(entity);
+                LOG.info("Associado atualizado.");
+            } else {
+                LOG.info("Código do associado inválido.");
+            }
+        } catch (DataIntegrityViolationException dive) {
+            LOG.error("CPF {} já cadastrado para outro associado. {}", associateDto.getCpf(), dive.getMessage());
+        } catch (Exception e) {
+            LOG.error("Não foi possível atualizar o associado.");
         }
     }
 }
