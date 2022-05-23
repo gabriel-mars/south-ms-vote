@@ -42,6 +42,7 @@ Este é o serviço principal do desafio, o qual gerencia os associados, pautas e
 Este projeto possui documentação de suas rotas no *Swagger* através endereço do serviço + `/swagger-ui.html#/`.
 Parâmetros para execução:
 - `APPLICATION_NAME`: Parâmetro que recebe e define o nome do serviço dentro do *spring*;
+- `SERVER_PORT`: Parâmetro que recebe e define a porta onde o serviço irá ficar em execução;
 - `DATABASE_URL`: URL de conexão com o banco do PostgreSQL;
 - `DATABASE_PORT`: Porta na qual a conexão do banco é realizada;
 - `DATABASE_NAME`: Nome do banco. Sugestão: `south_vote`;
@@ -58,6 +59,7 @@ Serviço final do desafio. Ele receberá a mensagem do tópico `assembly_result_
 Este projeto possui documentação de suas rotas no *Swagger* através endereço do serviço + `/swagger-ui.html#/`.
 Parâmetros para execução:
 - `APPLICATION_NAME`: Parâmetro que recebe e define o nome do serviço dentro do *spring*;
+- `SERVER_PORT`: Parâmetro que recebe e define a porta onde o serviço irá ficar em execução;
 - `DATABASE_URL`: URL de conexão com o banco do PostgreSQL;
 - `DATABASE_PORT`: Porta na qual a conexão do banco é realizada;
 - `DATABASE_NAME`: Nome do banco. Sugestão: `south_assembly`;
