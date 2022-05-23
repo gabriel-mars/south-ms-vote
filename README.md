@@ -32,7 +32,9 @@ Para sua execução, são necessários três parâmetros:
 
  - `APPLICATION_NAME`: Parâmetro que recebe e define o nome do serviço dentro do *spring*;
  - `SERVER_PORT`: Parâmetro que recebe e define a porta onde o serviço irá ficar em execução;
- - `EUREKA_BASE_URL`: URL onde o ms-eureka está rodando, para este serviço possa se registrar.
+ - `EUREKA_BASE_URL`: URL onde o ms-eureka está rodando, para este serviço possa se registrar;
+ - `VOTE_MS_NAME`: Nome do serviço de votação que também foi passado como parâmetro no respectivo serviço;
+ - `ASSEMBLY_MS_NAME`: Nome do serviço de pautas que também foi passado como parâmetro no respectivo serviço.
 
 Repositório GitHub: [ms-gateway](https://github.com/gabriel-mars/ms-gateway);
 
